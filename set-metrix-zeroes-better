@@ -1,1 +1,42 @@
+// Accepted Solve with O(m+n) Space Complexity. 
 
+class Solution {
+    void nullifyColumn(int[][] matrix, int column){
+        for (int k = 0; k < matrix.length; k++){
+            matrix[k][column] = 0;
+        }
+    }
+
+    void nullifyRow(int[][] matrix, int row) {
+        for(int j = 0; j< matrix[0].length; j++) {
+            matrix[row][j] = 0;
+        }
+    }
+    public void setZeroes(int[][] matrix) {
+        // As it is an array of array.
+        // rows would be 
+
+        int m = matrix.length;
+        // Column would be
+
+        int n = matrix[0].length;
+        ArrayList<Integer> markRows = new ArrayList<>();
+        ArrayList<Integer> markColumns = new ArrayList<>();       
+        for (int i = 0 ; i < m ; i ++){
+            for ( int j = 0 ; j< n ; j++){
+                if (matrix[i][j] == 0 ){
+                    markRows.add(i);
+                    markColumns.add(j);
+                }
+            }
+        }
+
+        for(int eachRow : markRows ){
+            this.nullifyRow(matrix, eachRow);
+        }
+
+        for(int eachColumn: markColumns) {
+            this.nullifyColumn(matrix, eachColumn);
+        }
+    }
+}
