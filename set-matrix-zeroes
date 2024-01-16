@@ -1,6 +1,6 @@
 // Initial Solve that did not work. There is a catch in this question. 
-
-
+// What the heck is issue with this this, this actually lost the context of intial Zeros and messed up with the zeros which was done by the solution
+// context can be retailed by using another m cross n matrix but ask of the question is to do it in place. 
 class Solution {
     void nullifyColumn(int[][] matrix, int row, int column){
         for(int j = 0; j< matrix[0].length; j++) {
