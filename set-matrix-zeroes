@@ -1,0 +1,31 @@
+// Initial Solve that did not work. There is a catch in this question. 
+
+
+class Solution {
+    void nullifyColumn(int[][] matrix, int row, int column){
+        for(int j = 0; j< matrix[0].length; j++) {
+            matrix[row][j] = 0;
+        }
+
+        for (int k = 0; k < matrix.length; k++){
+            matrix[k][column] = 0;
+        }
+    }
+    public void setZeroes(int[][] matrix) {
+        // As it is an array of array.
+        // rows would be 
+
+        int m = matrix.length;
+        // Column would be
+
+        int n = matrix[0].length;
+
+        for (int i = 0 ; i < m ; i ++){
+            for ( int j = 0 ; j< n ; j++){
+                if (matrix[i][j] == 0 ){
+                    this.nullifyColumn(matrix, i, j);
+                }
+            }
+        }
+    }
+}
