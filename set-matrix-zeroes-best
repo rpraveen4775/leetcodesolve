@@ -1,1 +1,73 @@
 
+class Solution {
+
+    void printTwoDArray(int[][] twoDArray){
+        for (int i = 0; i < twoDArray.length; i++) {
+            for (int j = 0; j < twoDArray[i].length; j++) {
+                System.out.print(twoDArray[i][j] + " ");
+            }
+            System.out.println(); // Move to the next line after printing each row
+        }
+    }
+    void nullifyColumn(int[][] matrix, int column){
+        for (int k = 0; k < matrix.length; k++){
+            matrix[k][column] = 0;
+        }
+    }
+
+    void nullifyRow(int[][] matrix, int row) {
+        for(int j = 0; j< matrix[row].length; j++) {
+            matrix[row][j] = 0;
+        }
+    }
+    public void setZeroes(int[][] matrix) {
+        // As it is an array of array.
+        // rows would be 
+        int m = matrix.length;
+        
+        // Column would be
+        int n = matrix[0].length;
+        //this.printTwoDArray(matrix);
+
+        int clashVar = -1 ;
+        for (int i = 0 ; i < m ; i ++){
+            for ( int j = 0 ; j< n ; j++){
+                if (matrix[i][j] == 0 ){
+                    if(j == 0 ){
+                        clashVar = 0;
+                    } else {
+                        matrix[0][j]=0;
+                        matrix[i][0]=0;
+                    }
+                }
+            }
+        }
+        //this.printTwoDArray(matrix);
+        //System.out.println(clashVar);
+        for(int rowIter = m-1; rowIter > 0 ; rowIter-- ){
+            for (int colIter = n-1 ; colIter > 0 ; colIter-- ){
+                if ((matrix[rowIter][0] == 0) || (matrix[0][colIter]==0)) {
+                    matrix[rowIter][colIter] = 0;
+                }
+            }
+        }
+
+        //this.printTwoDArray(matrix);
+        if (matrix[0][0] == 0 ) {
+            this.nullifyRow(matrix, 0);
+        }
+
+        if (clashVar == 0) {
+            this.nullifyColumn(matrix, 0);
+        }
+        
+        //this.printTwoDArray(matrix);
+        if ( matrix.length == 1 ) {
+            for (int last = 0; last < n ; last ++ ){
+                if(matrix[0][last] == 0 ) {
+                    this.nullifyRow(matrix, 0);
+                }
+            }
+        }
+    }
+}
